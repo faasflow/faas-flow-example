@@ -1,0 +1,105 @@
+provider:
+  name: faas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  sync-chain:
+    lang: faas-flow
+    handler: ./sync-chain
+    image: s8sg/sync-chain-example:1.0.0
+    labels:
+      faas-flow: 1
+      faas-flow-desc: "flow for a example synchronous chain execution"
+    environment:
+      write_debug: true
+      combine_output: false
+      workflow_name: "sync-chain"
+    environment_file:
+      - flow.yml
+
+  async-chain:
+    lang: faas-flow
+    handler: ./async-chain
+    image: s8sg/async-chain-example:1.0.0
+    labels:
+      faas-flow: 1
+      faas-flow-desc: "flow for a example asynchronous chain execution"
+    environment:
+      write_debug: true
+      combine_output: false
+      workflow_name: "async-chain"
+    environment_file:
+      - flow.yml
+    secrets:
+      - s3-secret-key
+      - s3-access-key
+
+  parallel-branching:
+    lang: faas-flow
+    handler: ./parallel-branching
+    image: s8sg/parallel-branching-example:1.0.0
+    labels:
+      faas-flow: 1
+      faas-flow-desc: "flow for a example parallel branch execution"
+    environment:
+      write_debug: true
+      combine_output: false
+      workflow_name: "parallel-branching"
+    environment_file:
+      - flow.yml
+    secrets:
+      - s3-secret-key
+      - s3-access-key
+
+  dynamic-branching:
+    lang: faas-flow
+    handler: ./dynamic-branching
+    image: s8sg/dynamic-branching-example:1.0.0
+    labels:
+      faas-flow: 1
+      faas-flow-desc: "flow for a example dynamic branch execution"
+    environment:
+      write_debug: true
+      combine_output: false
+      workflow_name: "dynamic-branching"
+    environment_file:
+      - flow.yml
+    secrets:
+      - s3-secret-key
+      - s3-access-key
+
+  conditional-branching:
+    lang: faas-flow
+    handler: ./conditional-branching
+    image: s8sg/conditional-branching:1.0.0
+    labels:
+      faas-flow: 1
+      faas-flow-desc: "flow for a example synchronous chain execution"
+    environment:
+      write_debug: true
+      combine_output: false
+      workflow_name: "conditional-branching"
+    environment_file:
+      - flow.yml
+    secrets:
+      - s3-secret-key
+      - s3-access-key
+
+  func1:
+    lang: python
+    handler: ./func1
+    image: s8sg/func1-example:1.0.0
+
+  func2:
+    lang: python
+    handler: ./func2
+    image: s8sg/func2-example:1.0.0
+
+  fake-storage:
+    lang: python
+    handler: ./fake-storage
+    image: s8sg/fake-storage:1.0.0
+    environment:
+      write_debug: true
+      combine_output: false
+
