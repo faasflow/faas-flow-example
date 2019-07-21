@@ -10,6 +10,8 @@ Super simple examples of faas-flow
 ![parallel-branch-dag](parallel-branch-dag.png)
 > Dynamic Branching
 ![dynamic-branch-dag](dynamic-branch-dag.png)
+> Conditional Branching 
+![conditional-branch-dag](conditional-branch-dag.png)
 
 ## Getting Started 
 1. Deploy Openfaas
@@ -45,9 +47,11 @@ faas deploy
 ```bash
 curl -v http://127.0.0.1:8080/function/sync-chain
 curl -v http://127.0.0.1:8080/function/async-chain
-curl -v http://127.0.0.1:8080/function/parallel-branch-dag
-curl -v http://127.0.0.1:8080/function/dynamic-branch-dag
+curl -v http://127.0.0.1:8080/function/parallel-branching
+curl -v http://127.0.0.1:8080/function/dynamic-branching
+curl -v http://127.0.0.1:8080/function/conditional-branching
 ``` 
+9. Check the logs of storage function
 
 ## Tracing Information in faas-flow-tower
 > Sync Chain 
@@ -58,3 +62,5 @@ curl -v http://127.0.0.1:8080/function/dynamic-branch-dag
 ![parallel-branch-tracing](parallel-branch-tracing.png)
 > Dynamic Branching
 ![dynamic-branch-tracing](dynamic-branch-tracing.png)
+> Conditional Branching
+![dynamic-branch-tracing](conditional-branch-tracing.png)
