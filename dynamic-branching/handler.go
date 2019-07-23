@@ -49,23 +49,6 @@ func Define(flow *faasflow.Workflow, context *faasflow.Context) (err error) {
 		data = []byte(string(data) + "modifier3")
 		return data, nil
 	})
-	subforeachDag := foreachDag.ForEachBranch("SF",
-		func(data []byte) map[string][]byte {
-			// for each returned key in the hashmap a new branch will be executed
-			// this function executes in the runtime of foreach F
-			return map[string][]byte{"sf1": data, "sf2": data}
-		},
-		faasflow.Aggregator(func(data map[string][]byte) ([]byte, error) {
-			str1 := string(data["sf1"])
-			str2 := string(data["sf2"])
-			return []byte(str1 + str2), nil
-		}),
-	)
-	subforeachDag.Node("n1").Modify(func(data []byte) ([]byte, error) {
-		data = []byte(string(data) + "modifier4")
-		return data, nil
-	})
-	foreachDag.Edge("n1", "SF")
 	dag.Node("n2").Callback("http://gateway:8080/function/fake-storage")
 	dag.Edge("n1", "C")
 	dag.Edge("C", "n2")
