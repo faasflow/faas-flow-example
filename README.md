@@ -3,15 +3,15 @@ Super simple examples of faas-flow
 
 ## Dags
 > Sync Chain
-![sync-chain-dag](sync-chain-dag.png)
+![sync-chain-dag](doc/sync-chain-dag.png)
 > Async Chain
-![async-chain-dag](async-chain-dag.png)
+![async-chain-dag](doc/async-chain-dag.png)
 > Parallel Branching
-![parallel-branch-dag](parallel-branch-dag.png)
+![parallel-branch-dag](doc/parallel-branch-dag.png)
 > Dynamic Branching
-![dynamic-branch-dag](dynamic-branch-dag.png)
+![dynamic-branch-dag](doc/dynamic-branch-dag.png)
 > Conditional Branching 
-![conditional-branch-dag](conditional-branch-dag.png)
+![conditional-branch-dag](doc/conditional-branch-dag.png)
 
 ## Getting Started 
 1. Deploy Openfaas
@@ -55,12 +55,12 @@ curl -v http://127.0.0.1:8080/function/conditional-branching
 
 ## Tracing Information in faas-flow-tower
 > Sync Chain 
-![sync-chain-tracing](sync-chain-racing.png)
+![sync-chain-tracing](doc/sync-chain-tracing.png)
 > Async Chain
-![async-chain-tracing](async-chain-tracing.png)
+![async-chain-tracing](doc/async-chain-tracing.png)
 > Parallel Branching
-![parallel-branch-tracing](parallel-branch-tracing.png)
+![parallel-branch-tracing](doc/parallel-branch-tracing.png)
 > Dynamic Branching
-![dynamic-branch-tracing](dynamic-branch-tracing.png)
+![dynamic-branch-tracing](doc/dynamic-branch-tracing.png)
 > Conditional Branching
-![dynamic-branch-tracing](conditional-branch-tracing.png)
+![dynamic-branch-tracing](doc/conditional-branch-tracing.png)
