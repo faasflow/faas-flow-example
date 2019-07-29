@@ -13,7 +13,6 @@ functions:
     environment:
       write_debug: true
       combine_output: false
-      workflow_name: "sync-chain"
     environment_file:
       - flow.yml
 
@@ -27,7 +26,6 @@ functions:
     environment:
       write_debug: true
       combine_output: false
-      workflow_name: "async-chain"
     environment_file:
       - flow.yml
     secrets:
@@ -44,7 +42,6 @@ functions:
     environment:
       write_debug: true
       combine_output: false
-      workflow_name: "parallel-branching"
     environment_file:
       - flow.yml
     secrets:
@@ -61,7 +58,6 @@ functions:
     environment:
       write_debug: true
       combine_output: false
-      workflow_name: "dynamic-branching"
     environment_file:
       - flow.yml
     secrets:
@@ -78,7 +74,6 @@ functions:
     environment:
       write_debug: true
       combine_output: false
-      workflow_name: "conditional-branching"
     environment_file:
       - flow.yml
     secrets:

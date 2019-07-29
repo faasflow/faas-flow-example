@@ -1,5 +1,5 @@
 environment:
-  gateway: "gateway:8080"
+  # gateway: "gateway:8080" use this for Swarm
   enable_tracing: true
   trace_server: "jaegertracing:5775"
   enable_hmac: true
