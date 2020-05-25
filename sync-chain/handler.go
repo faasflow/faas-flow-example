@@ -4,7 +4,7 @@ import (
 	faasflow "github.com/s8sg/faas-flow"
 )
 
-// Define provide definiton of the workflow
+// Define provide definition of the workflow
 func Define(flow *faasflow.Workflow, context *faasflow.Context) (err error) {
 	flow.SyncNode().Apply("func1").Apply("func2").
 		Modify(func(data []byte) ([]byte, error) {
@@ -14,12 +14,16 @@ func Define(flow *faasflow.Workflow, context *faasflow.Context) (err error) {
 	return
 }
 
-// DefineStateStore provides the override of the default StateStore
-func DefineStateStore() (faasflow.StateStore, error) {
+// OverrideStateStore provides the override of the default StateStore
+func OverrideStateStore() (faasflow.StateStore, error) {
+	// NOTE: By default FaaS-Flow use consul as a state-store,
+	//       This can be overridden with other synchronous KV store (e.g. ETCD)
 	return nil, nil
 }
 
-// ProvideDataStore provides the override of the default DataStore
-func DefineDataStore() (faasflow.DataStore, error) {
+// OverrideDataStore provides the override of the default DataStore
+func OverrideDataStore() (faasflow.DataStore, error) {
+	// NOTE: By default FaaS-Flow use minio as a data-store,
+	//       This can be overridden with other synchronous KV store
 	return nil, nil
 }

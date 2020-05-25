@@ -1,9 +1,9 @@
 environment:
-  # gateway: "gateway:8080" use this for Swarm
+  gateway: "gateway.openfaas:8080"
   enable_tracing: true
-  trace_server: "jaegertracing:5775"
+  trace_server: "jaeger-agent.faasflow:5775"
   enable_hmac: true
-  consul_url: "statestore_consul:8500"
+  consul_url: "consul.faasflow:8500"
   consul_dc: "dc1"
-  s3_url: "minio:9000"
+  s3_url: "minio.faasflow:9000"
   s3_tls: false

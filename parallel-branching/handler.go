@@ -2,12 +2,9 @@ package function
 
 import (
 	faasflow "github.com/s8sg/faas-flow"
-	consulStateStore "github.com/s8sg/faas-flow-consul-statestore"
-	minioDataStore "github.com/s8sg/faas-flow-minio-datastore"
-	"os"
 )
 
-// Define provide definiton of the workflow
+// Define provide definition of the workflow
 func Define(flow *faasflow.Workflow, context *faasflow.Context) (err error) {
 
 	dag := flow.Dag()
@@ -24,7 +21,7 @@ func Define(flow *faasflow.Workflow, context *faasflow.Context) (err error) {
 		str1 := string(data["n2"])
 		str2 := string(data["n3"])
 		return []byte(str1 + str2), nil
-	})).Callback("http://gateway:8080/function/fake-storage")
+	})).Apply("fake-storage")
 
 	dag.Edge("n1", "n2")
 	dag.Edge("n1", "n3")
@@ -33,23 +30,16 @@ func Define(flow *faasflow.Workflow, context *faasflow.Context) (err error) {
 	return
 }
 
-// DefineStateStore provides the override of the default StateStore
-func DefineStateStore() (faasflow.StateStore, error) {
-	consulss, err := consulStateStore.GetConsulStateStore(
-		os.Getenv("consul_url"),
-		os.Getenv("consul_dc"),
-	)
-	if err != nil {
-		return nil, err
-	}
-	return consulss, nil
+// OverrideStateStore provides the override of the default StateStore
+func OverrideStateStore() (faasflow.StateStore, error) {
+	// NOTE: By default FaaS-Flow use consul as a state-store,
+	//       This can be overridden with other synchronous KV store (e.g. ETCD)
+	return nil, nil
 }
 
-// ProvideDataStore provides the override of the default DataStore
-func DefineDataStore() (faasflow.DataStore, error) {
-	miniods, err := minioDataStore.InitFromEnv()
-	if err != nil {
-		return nil, err
-	}
-	return miniods, nil
+// OverrideDataStore provides the override of the default DataStore
+func OverrideDataStore() (faasflow.DataStore, error) {
+	// NOTE: By default FaaS-Flow use minio as a data-store,
+	//       This can be overridden with other synchronous KV store
+	return nil, nil
 }

@@ -1,27 +1,32 @@
 provider:
-  name: faas
+  name: openfaas
   gateway: http://127.0.0.1:8080
 
 functions:
   sync-chain:
     lang: faas-flow
     handler: ./sync-chain
-    image: s8sg/sync-chain-example:1.0.0
+    image: s8sg/sync-chain-example:2.0.0
     labels:
       faas-flow: 1
+    annotations:
       faas-flow-desc: "flow for a example synchronous chain execution"
     environment:
       write_debug: true
       combine_output: false
     environment_file:
       - flow.yml
+    secrets:
+      - s3-secret-key
+      - s3-access-key
 
   async-chain:
     lang: faas-flow
     handler: ./async-chain
-    image: s8sg/async-chain-example:1.0.0
+    image: s8sg/async-chain-example:2.0.0
     labels:
       faas-flow: 1
+    annotations:
       faas-flow-desc: "flow for a example asynchronous chain execution"
     environment:
       write_debug: true
@@ -35,9 +40,10 @@ functions:
   parallel-branching:
     lang: faas-flow
     handler: ./parallel-branching
-    image: s8sg/parallel-branching-example:1.0.0
+    image: s8sg/parallel-branching-example:2.0.0
     labels:
       faas-flow: 1
+    annotations:
       faas-flow-desc: "flow for a example parallel branch execution"
     environment:
       write_debug: true
@@ -51,9 +57,10 @@ functions:
   dynamic-branching:
     lang: faas-flow
     handler: ./dynamic-branching
-    image: s8sg/dynamic-branching-example:1.0.0
+    image: s8sg/dynamic-branching-example:2.0.0
     labels:
       faas-flow: 1
+    annotations:
       faas-flow-desc: "flow for a example dynamic branch execution"
     environment:
       write_debug: true
@@ -67,9 +74,10 @@ functions:
   conditional-branching:
     lang: faas-flow
     handler: ./conditional-branching
-    image: s8sg/conditional-branching:1.0.0
+    image: s8sg/conditional-branching:2.0.0
     labels:
       faas-flow: 1
+    annotations:
       faas-flow-desc: "flow for a example synchronous chain execution"
     environment:
       write_debug: true
