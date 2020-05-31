@@ -1,6 +1,6 @@
 provider:
   name: openfaas
-  gateway: http://127.0.0.1:8080
+  gateway: http://127.0.0.1:31112
 
 functions:
   sync-chain:
@@ -11,9 +11,6 @@ functions:
       faas-flow: 1
     annotations:
       faas-flow-desc: "flow for a example synchronous chain execution"
-    environment:
-      write_debug: true
-      combine_output: false
     environment_file:
       - flow.yml
     secrets:
@@ -28,9 +25,6 @@ functions:
       faas-flow: 1
     annotations:
       faas-flow-desc: "flow for a example asynchronous chain execution"
-    environment:
-      write_debug: true
-      combine_output: false
     environment_file:
       - flow.yml
     secrets:
@@ -45,9 +39,6 @@ functions:
       faas-flow: 1
     annotations:
       faas-flow-desc: "flow for a example parallel branch execution"
-    environment:
-      write_debug: true
-      combine_output: false
     environment_file:
       - flow.yml
     secrets:
@@ -62,9 +53,6 @@ functions:
       faas-flow: 1
     annotations:
       faas-flow-desc: "flow for a example dynamic branch execution"
-    environment:
-      write_debug: true
-      combine_output: false
     environment_file:
       - flow.yml
     secrets:
@@ -79,9 +67,6 @@ functions:
       faas-flow: 1
     annotations:
       faas-flow-desc: "flow for a example synchronous chain execution"
-    environment:
-      write_debug: true
-      combine_output: false
     environment_file:
       - flow.yml
     secrets:
